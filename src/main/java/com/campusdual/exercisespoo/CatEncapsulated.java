@@ -14,7 +14,7 @@ public class CatEncapsulated {
 
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -22,7 +22,7 @@ public class CatEncapsulated {
     }
 
     public String getBreed() {
-        return breed;
+        return this.breed;
     }
 
     public void setBreed(String breed) {
@@ -30,7 +30,7 @@ public class CatEncapsulated {
     }
 
     public String getSex() {
-        return sex;
+        return this.sex;
     }
 
     public void setSex(String sex) {
@@ -38,11 +38,18 @@ public class CatEncapsulated {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        if(age>0) {
+            this.age = age;
+        }else{
+            System.out.println("La edad introducida no puede ser 0 o negativa");
+        }
+    }
+    public int getAge(){
+        return age;
     }
 
     public String getHair() {
-        return hair;
+        return this.hair;
     }
 
     public void setHair(String hair) {
@@ -50,19 +57,22 @@ public class CatEncapsulated {
     }
 
     public String getColour() {
-        return colour;
+        return this.colour;
     }
 
     public void setColour(String colour) {
         this.colour = colour;
     }
 
+    public boolean isCastrated(){
+        return this.castrated;
+    }
     public void setCastrated(boolean castrated) {
         this.castrated = castrated;
     }
 
     public String getEyeColour() {
-        return eyeColour;
+        return this.eyeColour;
     }
 
     public void setEyeColour(String eyeColour) {
@@ -78,63 +88,33 @@ public class CatEncapsulated {
         this.colour = colour;
         this.castrated = castrated;
     }
-
-    //    Crea un método estático que cambie el color del pelo y otro no estático que cambie el color de los ojos
-    public void setChangeColour(String Colour){
-        this.colour = Colour;
-    }
-    public void setChangeEyeColour(String eyeColour){
-        this.eyeColour = eyeColour;
-    }
-    //    Crea un método estático que cambie la edad del gato y otro no estático que permita recuperar ese valor cuando se invoque
-    public void setChangeAge(int age) {
-        if (age > 0) {
-            this.age = age;
-        } else {
-            System.out.println("La edad introducida no puede ser 0 o negativa");
-        }
-    }
-    public int getAge(){
-        return age;
-    }
-    //    Crea un método no estático que castre a los gatos y otro no estático, llamado isCastrated, que devuelva su estado
-    public void setCastrated(){
-        this.castrated = true;
-    }
-    public void isCastrated(){
-        if(this.castrated == true){
-            System.out.println("Este gato está castrado.");
-        }else{
-            System.out.println("Este gato no está castrado.");
-        }
-    }
-    //    Crea un método no estático llamado catDetails() que muestre todas las características de un gato (sé original en la presentación de los datos, dale un poco de arte)
-    public void catDetails(){
-        System.out.println("Su nombre es: "+this.name+".");
-        System.out.println("Su raza es: "+this.breed+".");
-        System.out.println("Su sexo es: "+this.sex+".");
-        System.out.println("Su edad es: "+this.age+" meses.");
-        System.out.println("Su pelo es: "+this.hair+".");
-        System.out.println("Es de color: "+this.colour+".");
-        isCastrated();
-        System.out.println("Sus ojos son de color: "+eyeColour);
+      public void catDetails(){
+        System.out.println("Su nombre es: "+this.getName()+".");
+        System.out.println("Su raza es: "+this.getBreed()+".");
+        System.out.println("Su sexo es: "+this.getSex()+".");
+        System.out.println("Su edad es: "+this.getAge()+" meses.");
+        System.out.println("Su pelo es: "+this.getHair()+".");
+        System.out.println("Es de color: "+this.getColour()+".");
+        System.out.println("Está este gato castrado: "+this.isCastrated());
+        System.out.println("Sus ojos son de color: "+this.getEyeColour());
         System.out.println(" ");
     }
-    //    Crea un main()
-//    Crea un gato de la raza siamesa, otro de raza persa, y otro de raza esfinge
+
     public static void main(String[] args) {
         CatEncapsulated gatoJinx = new CatEncapsulated("Jinx","Siamesa","Hembra",18,"Corto","Gris",false);
-        gatoJinx.setCastrated();
+        gatoJinx.setColour("Marrón");
+        gatoJinx.setCastrated(true);
         gatoJinx.catDetails();
 
         CatEncapsulated gatoNoqui = new CatEncapsulated("Noqui","Persa","Macho",4,"Corto","Negro",false);
-        gatoNoqui.setCastrated();
+        gatoNoqui.setColour("Blanco");
+        gatoNoqui.setCastrated(true);
         gatoNoqui.catDetails();
 
 
         CatEncapsulated gatoClean = new CatEncapsulated("Clean","Esfinge","Macho",13,"Largo","Blanco",false);
-        gatoClean.setChangeEyeColour("Blue");
-        gatoClean.setChangeAge(-5);
+        gatoClean.setEyeColour("Blue");
+        gatoClean.setAge(-5);
         gatoClean.catDetails();
 
 
